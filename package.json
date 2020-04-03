@@ -1,0 +1,16 @@
+{
+  "name": "ec2security",
+  "version": "1.0.0",
+  "description": "list the ec2 security groups",
+  "main": "handler.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "ec2",
+    "security",
+    "groups"
+  ],
+  "author": "Luja Shrestha",
+  "license": "ISC"
+}
