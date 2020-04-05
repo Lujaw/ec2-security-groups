@@ -22,7 +22,12 @@ service: ec2security
 
 provider:
   name: aws
+  endpointType: REGIONAL  
   runtime: nodejs12.x
+
+custom:
+    serverless-offline:   ## add this two lines
+        port: 4000        ## bellow "custom:" line  
 
 # you can overwrite defaults here
 #  stage: dev
@@ -59,7 +64,11 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    events:
+      - http:
+          path: securitygroups
+          method: get    
+    handler: src/handlers/securityGroups.list
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -111,3 +120,7 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+plugins: 
+  - serverless-offline
+
