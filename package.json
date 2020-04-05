@@ -16,7 +16,8 @@
   "author": "Luja Shrestha",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.652.0"
+    "aws-sdk": "^2.652.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "aws-sdk-mock": "^5.1.0",
