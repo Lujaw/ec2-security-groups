@@ -5,24 +5,26 @@ provider:
   endpointType: REGIONAL  
   runtime: nodejs12.x
   region: ${self:custom.region}
+  environment:
+    region: ${self:custom.region} 
+    apiVersion: "2016-11-15"
+    AUTH0_CLIENT_ID: ${file(./secrets.json):AUTH0_CLIENT_ID}
+    AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
 
 custom:
-  serverless-offline:
-    port: 4000
   region: ${opt:region, 'ap-southeast-2'} 
 
-environment:
-  region: ${self:custom.region}
-  apiVersion: "2016-11-15"
 
 functions:
+  auth:
+    handler: src/handlers/authoriser.auth
   list:
+    handler: src/handlers/securityGroups.list
     events:
       - http:
           path: securitygroups
-          method: get    
-    handler: src/handlers/securityGroups.list
+          method: get
+          authorizer: auth
 
 plugins: 
   - serverless-offline
-
