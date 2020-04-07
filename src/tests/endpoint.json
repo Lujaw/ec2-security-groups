@@ -1,0 +1,10 @@
+{
+    "lambda": {
+        "region": "ap-southeast-2",
+        "name": "ec2-security-group"
+    },
+    "api": {
+        "id": "n5y4ttah4f",
+        "stage": "dev"
+    }
+}
