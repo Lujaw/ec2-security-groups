@@ -1,19 +1,16 @@
-'use strict';
-const ec2 = require('../services/ec2');
+"use strict";
+const ec2 = require("../services/ec2");
 
 module.exports.list = async (event) => {
   const list = await ec2.listSecurityGroups();
+  console.log("securityGroups#6->>>", { event });
 
   return {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
     },
-    body: JSON.stringify(
-        list,
-        null,
-        2
-    )
+    body: JSON.stringify(list, null, 2),
   };
 };
