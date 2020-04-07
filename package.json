@@ -8,8 +8,15 @@
     "test:e2e": "npx jest -i tests/end-to-end.test.js",
     "test:cov": "npx jest --coverage",
     "lint": "npx eslint '**/*.js' --ignore-pattern node_modules/",
-    "start": "SLS_DEBUG=* sls offline start --noTimeout",
+    "start": "sls offline start --noTimeout",
     "debug": "export SLS_DEBUG=* && node --inspect serverless offline -s dev"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/node_modules/**"
+    ]
   },
   "keywords": [
     "ec2",
@@ -21,6 +28,7 @@
   "dependencies": {
     "aws-sdk": "^2.652.0",
     "axios": "^0.19.2",
+    "jsonapi-serializer": "^3.6.6",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.3"
   },
