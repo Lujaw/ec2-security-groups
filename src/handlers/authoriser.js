@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const jwkToPem = require("jwk-to-pem");
 const axios = require("axios");
 
-module.exports.auth = async (event) => {
+const auth = async (event) => {
   try {
     const encodedToken = getEncodedToken(event.authorizationToken);
     const token = jwt.decode(encodedToken, { complete: true });
@@ -31,20 +31,23 @@ const getJwkByKid = async (iss, kid) => {
   }
 };
 
-const generatePolicy = (principalId, effect, resource) => {
-  const authResponse = {};
-  authResponse.principalId = principalId;
-  if (effect && resource) {
-    authResponse.policyDocument = {
-      Version: "2012-10-17",
-      Statement: [
-        {
-          Action: "execute-api:Invoke",
-          Effect: effect,
-          Resource: resource,
-        },
-      ],
-    };
-  }
-  return authResponse;
+const generatePolicy = (principalId, effect, resource) => ({
+  principalId,
+  ...(effect &&
+    resource && {
+      policyDocument: {
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: "execute-api:Invoke",
+            Effect: effect,
+            Resource: resource,
+          },
+        ],
+      },
+    }),
+});
+
+module.exports = {
+  auth,
 };
