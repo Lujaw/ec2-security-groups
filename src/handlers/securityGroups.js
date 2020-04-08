@@ -1,4 +1,3 @@
-"use strict";
 const JSONAPISerializer = require("jsonapi-serializer").Serializer;
 const ec2 = require("../services/ec2");
 
@@ -15,9 +14,11 @@ const SecurityGroupSerializer = new JSONAPISerializer("securityGroups", {
   ],
 });
 
-module.exports.list = async () => {
+module.exports.list = async (event) => {
   try {
-    const { SecurityGroups } = await ec2.listSecurityGroups();
+    const { SecurityGroups } = await ec2.listSecurityGroups(
+      event.queryStringParameters
+    );
     const list = SecurityGroupSerializer.serialize(SecurityGroups);
     return {
       statusCode: 200,

@@ -14,7 +14,7 @@
   "jest": {
     "verbose": true,
     "collectCoverageFrom": [
-      "**/*.{js}",
+      "src/**/*.js",
       "!**/node_modules/**"
     ]
   },
@@ -30,7 +30,8 @@
     "axios": "^0.19.2",
     "jsonapi-serializer": "^3.6.6",
     "jsonwebtoken": "^8.5.1",
-    "jwk-to-pem": "^2.0.3"
+    "jwk-to-pem": "^2.0.3",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "aws-sdk-mock": "^5.1.0",

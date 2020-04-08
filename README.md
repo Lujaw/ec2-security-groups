@@ -64,4 +64,6 @@ serverless deploy
 
 ### TODO
 * Add unit test for the authoriser
-* Adding test and prod stages for the api
+* Add test and prod stages for the api
+* Add validation for the query parameters
+* Add query parameters for filtering the result

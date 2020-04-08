@@ -23,7 +23,7 @@ describe("EC2 Security groups list endpoint", () => {
     expect(res).toBeDefined();
     expect(res).toHaveProperty("get");
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty("SecurityGroups");
-    expect(res.body.SecurityGroups.length).toBeGreaterThan(0);
+    expect(res.body).toHaveProperty("data");
+    expect(res.body.data.length).toBeGreaterThan(0);
   });
 });
