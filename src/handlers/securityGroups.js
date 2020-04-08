@@ -15,16 +15,12 @@ const SecurityGroupSerializer = new JSONAPISerializer("securityGroups", {
   ],
 });
 
-module.exports.list = async (event) => {
+module.exports.list = async () => {
   try {
     const { SecurityGroups } = await ec2.listSecurityGroups();
     const list = SecurityGroupSerializer.serialize(SecurityGroups);
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-      },
       body: JSON.stringify(list, null, 2),
     };
   } catch (error) {

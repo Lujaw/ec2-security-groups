@@ -1,8 +1,6 @@
 {
     "esversion": 8,
     "esnext": false,
-    "moz": true,
-    "boss": true,
     "node": true,
     "validthis": true,
     "globals": {

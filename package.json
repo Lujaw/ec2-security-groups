@@ -33,7 +33,6 @@
     "jwk-to-pem": "^2.0.3"
   },
   "devDependencies": {
-    "supertest": "^4.0.2",
     "aws-sdk-mock": "^5.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -42,6 +41,8 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.2.7",
     "prettier": "^2.0.4",
-    "serverless-offline": "^6.1.4"
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-offline": "^6.1.4",
+    "supertest": "^4.0.2"
   }
 }
