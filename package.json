@@ -34,6 +34,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "mock-jwks": "^0.3.0",
     "aws-sdk-mock": "^5.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
