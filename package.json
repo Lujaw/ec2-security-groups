@@ -16,7 +16,8 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!**/node_modules/**"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "keywords": [
     "ec2",
@@ -34,7 +35,6 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "mock-jwks": "^0.3.0",
     "aws-sdk-mock": "^5.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -42,6 +42,8 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.2.7",
+    "mock-jwks": "^0.3.0",
+    "nock": "^12.0.3",
     "prettier": "^2.0.4",
     "serverless-dotenv-plugin": "^2.3.2",
     "serverless-offline": "^6.1.4",

@@ -2,13 +2,13 @@
 const AWS = require("aws-sdk");
 const _ = require("lodash");
 
-// Load credentials and set region from JSON file
-AWS.config.update({ region: process.env.region });
-
 const listSecurityGroups = async (params) => {
   // have to instantiate EC2 inside the function for the aws-sdk-mock to function
   try {
-    const ec2 = new AWS.EC2({ apiVersion: process.env.apiVersion });
+    const ec2 = new AWS.EC2({
+      apiVersion: process.env.apiVersion,
+      region: process.env.region,
+    });
     const sanitizedParams = sanitizeQueryParams(params);
     const list = await ec2.describeSecurityGroups(sanitizedParams).promise();
     return list;

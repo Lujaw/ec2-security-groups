@@ -1,9 +1,10 @@
 const AwsMock = require("aws-sdk-mock");
+const dotenv = require("dotenv");
 const ec2 = require("../services/ec2");
 const securityGroupSample = require("./securityGroupSample.json");
 
 beforeAll(() => {
-  AwsMock.mock("EC2", "describeSecurityGroups", securityGroupSample);
+  dotenv.config();
 });
 
 afterEach(() => {
@@ -12,6 +13,7 @@ afterEach(() => {
 
 describe("ec2 service", () => {
   it("should returns the list of the security group", async () => {
+    AwsMock.mock("EC2", "describeSecurityGroups", securityGroupSample);
     const list = await ec2.listSecurityGroups();
     expect(list).toEqual(securityGroupSample);
   });
