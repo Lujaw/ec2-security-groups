@@ -1,0 +1,10 @@
+{
+    "esversion": 8,
+    "esnext": false,
+    "node": true,
+    "validthis": true,
+    "globals": {
+      "EventEmitter": true,
+      "Promise": true
+    }
+}

@@ -1,0 +1,30 @@
+service: ec2security
+
+provider:
+  name: aws
+  endpointType: REGIONAL  
+  runtime: nodejs12.x
+  region: ${self:custom.region}
+  environment:
+    region: ${self:custom.region} 
+    apiVersion: "2016-11-15"
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID 
+    AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
+
+custom:
+  region: ${opt:region, 'ap-southeast-2'} 
+
+functions:
+  auth:
+    handler: src/handlers/authoriser.auth
+  list:
+    handler: src/handlers/securityGroups.list
+    events:
+      - http:
+          path: securitygroups
+          method: get
+          authorizer: auth
+
+plugins: 
+  - serverless-offline
+  - serverless-dotenv-plugin  
